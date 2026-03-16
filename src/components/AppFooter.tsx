@@ -25,7 +25,7 @@ export function AppFooter() {
           <a href="https://github.com/NousResearch/Hermes" target="_blank" rel="noopener noreferrer" className="app-footer-link">Hermes Agent</a>
         </p>
         <p className="app-footer-tagline">
-          <a href="https://gustagarnow.com" target="_blank" rel="noopener noreferrer" className="app-footer-link">
+          <a href="https://www.gustafgarnow.com/" target="_blank" rel="noopener noreferrer" className="app-footer-link">
             Made by BALTSAR
           </a>
         </p>
