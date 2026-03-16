@@ -25,7 +25,7 @@ function escapeForJs(c: string): string {
 const SPEED_OPTIONS = [80, 120, 200]
 
 export function GlyphCard({ item, onCopyData, onCopyUsage, onAddToMockup }: GlyphCardProps) {
-  const [copyLabel, setCopyLabel] = useState<'Copy data' | 'Copy usage' | 'Copied!' | null>(null)
+  const [showCopiedToast, setShowCopiedToast] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
   const [speed, setSpeed] = useState(200)
   const [helpOpen, setHelpOpen] = useState(false)
@@ -55,23 +55,26 @@ const id = setInterval(() => {
 }, ${speed});
 // stop: clearInterval(id);`
 
+  const showToast = () => {
+    setShowCopiedToast(true)
+    setTimeout(() => setShowCopiedToast(false), 1400)
+  }
+
   const handleCopyData = () => {
     navigator.clipboard.writeText(dataSnippet)
       .then(() => {
-        setCopyLabel('Copied!')
-        setTimeout(() => setCopyLabel(null), 1200)
+        showToast()
       })
-      .catch(() => setCopyLabel(null))
+      .catch(() => {})
     onCopyData(dataSnippet)
   }
 
   const handleCopyUsage = () => {
     navigator.clipboard.writeText(usageSnippet)
       .then(() => {
-        setCopyLabel('Copied!')
-        setTimeout(() => setCopyLabel(null), 1200)
+        showToast()
       })
-      .catch(() => setCopyLabel(null))
+      .catch(() => {})
     onCopyUsage(usageSnippet)
   }
 
@@ -126,7 +129,7 @@ const id = setInterval(() => {
           className="sg-copy-btn"
           onClick={handleCopyData}
         >
-          {copyLabel === 'Copied!' ? 'Copied!' : 'Copy data'}
+          Copy data
         </button>
         <button
           type="button"
@@ -144,6 +147,11 @@ const id = setInterval(() => {
           + Mockup
         </button>
       </div>
+      {showCopiedToast && (
+        <div className="sg-copy-toast" role="status" aria-live="polite">
+          Copied
+        </div>
+      )}
       {showPreview && (
         <div className="sg-card-speed-popover" role="dialog" aria-label="Hastighet">
           <div className="sg-card-copy-preview-speed">

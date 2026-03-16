@@ -25,6 +25,10 @@ const THEME_SET = new Set<Theme>(THEME_ORDER)
 
 const STORAGE_KEY = 'glyphui-theme'
 
+function getRandomTheme(): Theme {
+  return THEME_ORDER[Math.floor(Math.random() * THEME_ORDER.length)]
+}
+
 const ThemeContext = createContext<{
   theme: Theme
   setTheme: (t: Theme) => void
@@ -34,7 +38,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>(() => {
     if (typeof window === 'undefined') return 'dark'
     const s = localStorage.getItem(STORAGE_KEY)
-    return s && THEME_SET.has(s as Theme) ? (s as Theme) : 'dark'
+    if (s && THEME_SET.has(s as Theme)) return s as Theme
+    return getRandomTheme()
   })
 
   useEffect(() => {

@@ -505,7 +505,7 @@ body {
 }
 .sg-card-help-wrap:hover .sg-card-tooltip,
 .sg-card-tooltip.visible { opacity: 1; visibility: visible; }
-.sg-card-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.sg-card-actions { display: flex; flex-wrap: nowrap; gap: 6px; justify-content: center; align-items: center; }
 .sg-card-speed-popover {
   position: absolute;
   bottom: 100%;
@@ -548,8 +548,39 @@ body {
   border-radius: var(--sg-radius-sm);
   color: var(--sg-btn-text);
   cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .sg-copy-btn:hover { background: var(--sg-border-subtle); color: var(--sg-text); }
+
+/* Copy-toast – dialog that says Copied and fades out */
+.sg-copy-toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  padding: 10px 20px;
+  font-family: var(--sg-font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--sg-bg);
+  background: var(--sg-accent);
+  border: 1px solid var(--sg-accent-dim);
+  border-radius: var(--sg-radius);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  animation: sg-copy-toast-in 0.2s ease, sg-copy-toast-out 0.25s ease 0.9s forwards;
+  pointer-events: none;
+}
+@keyframes sg-copy-toast-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+@keyframes sg-copy-toast-out {
+  to { opacity: 0; transform: translateX(-50%) translateY(-4px); }
+}
 
 /* Terminal mockup (styleguide) */
 .sg-terminal { max-width: 560px; border-radius: var(--sg-radius); overflow: hidden; border: 1px solid var(--sg-border-subtle); box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
