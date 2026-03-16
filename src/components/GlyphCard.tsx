@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import type { GlyphAnimation } from '../data/glyphAnimations'
+import { useLanguage } from '../context/LanguageContext'
 import { SpinnerGlyph } from './SpinnerGlyph'
 
 interface GlyphCardProps {
@@ -25,6 +26,7 @@ function escapeForJs(c: string): string {
 const SPEED_OPTIONS = [80, 120, 200]
 
 export function GlyphCard({ item, onCopyData, onCopyUsage, onAddToMockup }: GlyphCardProps) {
+  const { t } = useLanguage()
   const [showCopiedToast, setShowCopiedToast] = useState(false)
   const [showPreview, setShowPreview] = useState(false)
   const [speed, setSpeed] = useState(200)
@@ -129,27 +131,27 @@ const id = setInterval(() => {
           className="sg-copy-btn"
           onClick={handleCopyData}
         >
-          Copy data
+          {t('glyph.copyData')}
         </button>
         <button
           type="button"
           className="sg-copy-btn"
           onClick={handleCopyUsage}
         >
-          Copy usage
+          {t('glyph.copyUsage')}
         </button>
         <button
           type="button"
           className="sg-copy-btn"
           onClick={handleAddToMockup}
-          title="Lägg till i terminal mockup"
+          title={t('glyph.mockupTitle')}
         >
-          + Mockup
+          {t('glyph.mockup')}
         </button>
       </div>
       {showCopiedToast && (
         <div className="sg-copy-toast" role="status" aria-live="polite">
-          Copied
+          {t('glyph.copied')}
         </div>
       )}
       {showPreview && (

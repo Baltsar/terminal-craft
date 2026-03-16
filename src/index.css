@@ -505,7 +505,7 @@ body {
 }
 .sg-card-help-wrap:hover .sg-card-tooltip,
 .sg-card-tooltip.visible { opacity: 1; visibility: visible; }
-.sg-card-actions { display: flex; flex-wrap: nowrap; gap: 6px; justify-content: center; align-items: center; }
+.sg-card-actions { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; align-items: center; }
 .sg-card-speed-popover {
   position: absolute;
   bottom: 100%;
