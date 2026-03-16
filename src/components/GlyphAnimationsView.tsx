@@ -6,10 +6,12 @@ import {
   type GlyphAnimation,
   type GlyphCategory,
 } from '../data/glyphAnimations'
+import { useLanguage } from '../context/LanguageContext'
 import { GlyphCard } from './GlyphCard'
 import { SpinnerGlyph } from './SpinnerGlyph'
 
 export function GlyphAnimationsView() {
+  const { t } = useLanguage()
   const [selectedCategories, setSelectedCategories] = useState<GlyphCategory[]>([])
   const [sort, setSort] = useState<'az' | 'za' | 'category'>('az')
   const [mockupGlyphs, setMockupGlyphs] = useState<{ glyph: GlyphAnimation; speed: number }[]>([])
@@ -222,10 +224,10 @@ export function GlyphAnimationsView() {
               type="button"
               className="sg-mockup-copy-row"
               onClick={copyMockupRow}
-              aria-label="Kopiera raden du byggt"
-              title="Kopiera tillagda glyphs som data"
+              aria-label={t('tui.copyRowTitle')}
+              title={t('tui.copyRowTitle')}
             >
-              {copyFeedback ? 'Kopierat!' : 'Kopiera raden'}
+              {copyFeedback ? t('tui.copiedRow') : t('tui.copyRow')}
             </button>
           </div>
         )}
