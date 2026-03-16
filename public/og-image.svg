@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#161b22"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
+      <stop stop-color="#58a6ff"/>
+      <stop offset="1" stop-color="#79c0ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="80" y="120" width="280" height="180" rx="12" fill="url(#accent)" opacity="0.15" stroke="url(#accent)" stroke-width="2"/>
+  <rect x="100" y="140" width="48" height="48" rx="6" fill="url(#accent)"/>
+  <rect x="160" y="140" width="48" height="48" rx="6" fill="url(#accent)" opacity="0.6"/>
+  <rect x="220" y="140" width="32" height="48" rx="6" fill="url(#accent)" opacity="0.4"/>
+  <rect x="100" y="200" width="152" height="8" rx="4" fill="#8b949e"/>
+  <text x="600" y="380" text-anchor="middle" fill="#f0f6fc" font-family="ui-monospace, 'IBM Plex Mono', monospace" font-size="72" font-weight="700">TERMCRAFT</text>
+  <text x="600" y="450" text-anchor="middle" fill="#8b949e" font-family="ui-monospace, 'IBM Plex Mono', monospace" font-size="28">Terminal UI Builder</text>
+  <rect x="80" y="520" width="24" height="24" rx="4" fill="url(#accent)"/>
+  <text x="114" y="538" fill="#8b949e" font-family="ui-monospace, 'IBM Plex Mono', monospace" font-size="20">$ termcraft</text>
+</svg>
